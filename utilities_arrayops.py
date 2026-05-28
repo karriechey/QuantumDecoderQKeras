@@ -48,6 +48,12 @@ def convert_to_npdtype(dtype):
   if dtype is None or isinstance(dtype, np.dtype):
     return dtype
 
+  # Handle numpy type classes (e.g., np.int8, np.float32)
+  if dtype in (np.int8, np.int16, np.int32, np.int64,
+               np.uint8, np.uint16, np.uint32, np.uint64,
+               np.float16, np.float32, np.float64, np.bool_):
+    return np.dtype(dtype)
+
   if dtype == tf.int8:
     return np.int8
   elif dtype == tf.int16:
