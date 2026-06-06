@@ -167,3 +167,14 @@ plots
 
 # Saved data
 saved_data
+_dev/
+
+# macOS
+.DS_Store
+.virtual_documents/
+
+# Large dataset files — too big for GitHub (1.5GB+)
+datasets/
+
+# Conda/Anaconda project files
+anaconda_projects/
