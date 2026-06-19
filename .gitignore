@@ -177,4 +177,6 @@ _dev/
 datasets/
 
 # Conda/Anaconda project files
-anaconda_projects/results/weights/
+anaconda_projects/
+# Trained RCNN weights (regenerable)
+results/weights/
