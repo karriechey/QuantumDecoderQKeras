@@ -48,6 +48,12 @@ def convert_to_npdtype(dtype):
   if dtype is None or isinstance(dtype, np.dtype):
     return dtype
 
+  # Handle TF DTypes first. tf.float32 == np.float32 evaluates True, so a
+  # tf.DType would otherwise fall into the numpy-type-class branch below and
+  # np.dtype(tf.float32) raises. Resolving TF dtypes here avoids that.
+  if isinstance(dtype, tf.DType):
+    return dtype.as_numpy_dtype
+
   # Handle numpy type classes (e.g., np.int8, np.float32)
   if dtype in (np.int8, np.int16, np.int32, np.int64,
                np.uint8, np.uint16, np.uint32, np.uint64,
